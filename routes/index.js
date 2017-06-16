@@ -12,7 +12,7 @@ function ensureLoggedIn(req, res, next) {
 		return next();
 	}
 	else {
-		req.flash('error_msg', 'You are not Logged in !');
+		//req.flash('error_msg', 'You are not Logged in !');
 		res.redirect('/users/login');
 	}
 } 

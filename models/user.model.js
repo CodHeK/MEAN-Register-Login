@@ -1,10 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
-// mongoose.connect('mongodb://localhost/NodeLogin');
-
-// var db = mongoose.connection;
-
 //User Schema
 var UserSchema = mongoose.Schema ({
 	username : {
@@ -22,10 +18,12 @@ var UserSchema = mongoose.Schema ({
 	}
 });
 
-var User = module.exports = mongoose.model('User', UserSchema);
+var User = module.exports = mongoose.model('User', UserSchema, 'users');  //users = collection name
 
+
+//hash the password
 module.exports.createUser = function(newUser, callback) {
-	//from npm bycryptjs
+	//from npm bycryptjs website
 	bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(newUser.password, salt, function(err, hash) {
         // Store hash in your password DB. 
